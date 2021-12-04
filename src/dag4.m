@@ -14,8 +14,8 @@ sudos = reshape(cell2mat(arrayfun(@(x) transpose(sudos(:, :, x)), 1:N_sudokus, '
 had = zeros([5, 5, N_sudokus]);
 won = 0;
 
-winner = 0;
-winner1 = 0;
+winners = [];
+winners1 = 0;
 
 for i = 1:length(callout)
     had = had + (sudos == callout(i));
@@ -24,19 +24,19 @@ for i = 1:length(callout)
     vertical = any(all(had));
     horizontal = any(all(had, 2));
 
-    winner = unique(vertcat(find(horizontal), find(vertical)));
-    if ~isempty(winner) && winner1 == 0
-        winner1 = winner;
+    winners = unique(vertcat(find(horizontal), find(vertical)));
+    if ~isempty(winners) && winners1 == 0
+        winners1 = winners;
         i1 = i;
-        had1 = had(:, :, winner1);
+        had1 = had(:, :, winners1);
     end
 
-    if length(winner) == (N_sudokus)
-        winner2 = setdiff(winner, prev_winner);
+    if length(winners) == (N_sudokus)
+        winners2 = setdiff(winners, prev_winners);
         break;
     end
-    prev_winner = winner;
+    prev_winners = winners;
 end
 
-display(sum(sum(sudos(:, :, winner1).* ~had1))*callout(i1))
-display(sum(sum(sudos(:, :, winner2).* ~had(:, :, winner2)))*callout(i))
+display(sum(sum(sudos(:, :, winners1).* ~had1))*callout(i1))
+display(sum(sum(sudos(:, :, winners2).* ~had(:, :, winners2)))*callout(i))
