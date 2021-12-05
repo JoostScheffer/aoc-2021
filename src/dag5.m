@@ -1,8 +1,6 @@
-data = readtable("input5.txt");
-
-col_2 = str2double(string(split(data.Var2, " -> ")));
-
-data = horzcat(data.Var1, col_2, data.Var3);
+fid = fopen('input5.txt', 'rt');
+data = cell2mat(textscan(fid, '%f,%f -> %f,%f', 'HeaderLines', 0));
+fclose(fid);
 
 maxi = max(max(data)) + 1;
 
@@ -35,8 +33,8 @@ for i = 1:numel(data(:, 1))
     end
 end
 
-for i = 1:maxi
-    disp(join(replace(string(grid(i, 1:10)), "0", "."), ""))
-end
+% for i = 1:maxi
+%     disp(join(replace(string(grid(i, 1:10)), "0", "."), ""))
+% end
 
 display(sum(sum(grid >=2)))

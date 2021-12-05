@@ -1,16 +1,19 @@
-data = readtable('./input2.txt');
+fid = fopen('input2.txt', 'rt');
+data = textscan(fid, '%s %d', 'HeaderLines', 0);
+fclose(fid);
 
-instructions = string(data.Var1);
-up = sum(data.Var2(instructions == "up"));
-down = sum(data.Var2(instructions == "down"));
-forward = sum(data.Var2(instructions == "forward"));
+instructions = string(data{1});
+mag = data{2};
+
+up = sum(mag(instructions == "up"));
+down = sum(mag(instructions == "down"));
+forward = sum(mag(instructions == "forward"));
 
 vertical = down - up;
 horizontal = forward;
 disp(vertical*horizontal);
 
 % part 2
-mag = data.Var2;
 aim = 0;
 pos = 0;
 dept = 0;
