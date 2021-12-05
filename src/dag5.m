@@ -1,4 +1,4 @@
-fid = fopen('input5.txt', 'rt');
+fid = fopen('test5.txt', 'rt');
 data = cell2mat(textscan(fid, '%f,%f -> %f,%f', 'HeaderLines', 0));
 fclose(fid);
 
@@ -27,9 +27,8 @@ for i = 1:numel(data(:, 1))
         x_ran = linspace(x_1, x_2, range(x_range)+1);
         y_ran = linspace(y_1, y_2, range(y_range)+1);
 
-        for j = 1:length(x_ran)
-            grid(y_ran(j), x_ran(j)) = grid(y_ran(j), x_ran(j)) + 1;
-        end
+        select = y_ran + (x_ran - 1) * maxi;
+        grid(select) = grid(select) + 1;
     end
 end
 
