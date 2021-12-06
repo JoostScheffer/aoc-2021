@@ -28,4 +28,4 @@ for i = 1:numel(instructions)
             dept = dept + mag(i) * aim;
     end
 end
-disp(num2str(pos*dept));
+fprintf("%d\n", pos*dept);

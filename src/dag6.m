@@ -9,7 +9,7 @@ for i = 1:256
     num = circshift(num, -1);
     num(7) = num(7) + num(9);
     if i == 80
-        fprintf('%d', sum(num))
+        fprintf('%d\n', sum(num))
     end
 end
-fprintf('%d', sum(num))
+fprintf('%d\n', sum(num))

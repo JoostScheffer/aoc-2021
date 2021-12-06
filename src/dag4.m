@@ -24,17 +24,20 @@ for i = 1:length(callout)
     vertical = any(all(had));
     horizontal = any(all(had, 2));
 
-    winners = unique(vertcat(find(horizontal), find(vertical)));
+    combi = sort([find(horizontal); find(vertical)]);
 
+    if ~isempty(combi)
+        winners = combi([true; diff(combi(:)) > 0]);
 
-    if ~isempty(winners) && winner1 == 0
-        winner1 = winners;
-        i1 = i;
-        had1 = had(:, :, winner1);
+        if winner1 == 0
+            winner1 = winners;
+            i1 = i;
+            had1 = had(:, :, winner1);
+        end
     end
 
     if length(winners) == (N_sudokus)
-        winners2 = setdiff(winners, prev_winners);
+        winners2 = winners(~ismember(winners, prev_winners));
         break;
     end
     prev_winners = winners;
