@@ -1,5 +1,9 @@
 data = load("input6.txt");
-num = histogram(data, 'BinEdges', -0.5:1:8.5).Values;
+
+num = zeros([1,9]);
+for i=0:8
+    num(i+1) = sum(data == i);
+end
 
 for i = 1:256
     num = circshift(num, -1);
