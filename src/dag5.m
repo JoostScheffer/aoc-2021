@@ -1,4 +1,4 @@
-fid = fopen('test5.txt', 'rt');
+fid = fopen('input5.txt', 'rt');
 data = cell2mat(textscan(fid, '%f,%f -> %f,%f', 'HeaderLines', 0));
 fclose(fid);
 

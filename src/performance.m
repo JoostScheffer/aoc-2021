@@ -1,4 +1,4 @@
-N = 5;
+N = 6;
 % name = "dag" + string(1:N) + ".m";
 % result = runperf(name);
 % disp(mean(result.TestActivity.MeasuredTime(result.TestActivity.Objective == "sample")));
