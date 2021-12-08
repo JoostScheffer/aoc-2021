@@ -4,6 +4,11 @@ fid = fopen('input8.txt', 'rt');
 data = textscan(fid, '%s %s %s %s %s %s %s %s %s %s | %s %s %s %s', 'HeaderLines', 0);
 fclose(fid);
 
+% part 1
+len = strlength(after);
+som = sum(sum(len == 2)) + sum(sum(len == 3)) + sum(sum(len == 4)) + sum(sum(len == 7));
+disp(som);
+
 data = string([data{:}]).';
 som_tot = 0;
 for i = 1:width(data)
@@ -11,10 +16,6 @@ for i = 1:width(data)
     before = p(1:10, :);
     after = p(11:14, :);
 
-    % part 1
-    len = strlength(after);
-    som = sum(sum(len == 2)) + sum(sum(len == 3)) + sum(sum(len == 4)) + sum(sum(len == 7));
-    %     disp(som);
 
     % part 2
     before = char(before);
@@ -70,8 +71,9 @@ for i = 1:width(data)
         som = som * 10 + M(strip(val));
     end
     som_tot = som_tot + som;
-    disp(som);
 end
+
+disp(som_tot)
 
 function [mask, letters] = decompose(Q, before, length)
 tmp = sum(Q, 2) == length;
