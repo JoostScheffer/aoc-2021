@@ -1,13 +1,17 @@
-fid = fopen('input8.txt', 'rt');
-% fid = fopen('test8_1.txt', 'rt');
+% fid = fopen('input8.txt', 'rt');
+fid = fopen('test8_1.txt', 'rt');
 % fid = fopen('test8.txt', 'rt');
 data = textscan(fid, '%s %s %s %s %s %s %s %s %s %s | %s %s %s %s', 'HeaderLines', 0);
 fclose(fid);
 
 % part 1
-len = strlength(after);
-som = sum(sum(len == 2)) + sum(sum(len == 3)) + sum(sum(len == 4)) + sum(sum(len == 7));
-disp(som);
+% tmp = cell2mat(char(data));
+% before = tmp(1:10, :);
+% after = tmp(11:14, :);
+% 
+% len = strlength(after);
+% som = sum(sum(len == 2)) + sum(sum(len == 3)) + sum(sum(len == 4)) + sum(sum(len == 7));
+% disp(som);
 
 data = string([data{:}]).';
 som_tot = 0;
