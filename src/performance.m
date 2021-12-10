@@ -1,4 +1,4 @@
-N = 9;
+N = 10;
 disp("day | total time (ms)")
 for i = 1:N
     if i~=8

@@ -25,9 +25,10 @@ N = sum(sum(nul)) + sum(sum(data(nul)));
 disp(N);
 
 % part 2
-[a,n] = bwlabel(data~=9,4);
+a = bwlabel(data ~= 9, 4);
 disp(prod(maxk(arrayfun(@(x) nnz(a == x), 1:max(a, [], 'all')), 3)))
 
 % alternative approach
 % connected = bwconncomp(data~=9, 4);
 % disp(prod(maxk(cellfun(@numel, connected.PixelIdxList), 3)))
+% bwlabeln could also be used instead of bwlabel
